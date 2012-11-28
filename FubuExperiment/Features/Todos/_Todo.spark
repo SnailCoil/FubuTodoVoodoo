@@ -1,0 +1,18 @@
+﻿<div class="todo">
+    ${this.FormFor(new FubuExperiment.Handlers.Todos.TodoEditModel()).AddClass("editForm")}
+        <div class="title">
+            <input type="text" name="Title" value="${todo.Title}" />
+        </div>
+        <div class="Description">
+            <input type="text" name="Description" value="${todo.Description}" />
+        </div>
+        <input type="hidden" name="Username" value="${username}" />
+        <input type="hidden" name="ID" value="${todo.ID}" />
+        <input type="submit" value="Edit" />
+    !{this.EndForm()}
+    ${this.FormFor(new FubuExperiment.Handlers.Todos.TodoDeleteModel()).AddClass("deleteForm")}
+        <input type="hidden" name="Username" value="${username}" />
+        <input type="hidden" name="ID" value="${todo.ID}" />
+        <input type="submit" value="Delete" />
+    !{this.EndForm()}
+</div>

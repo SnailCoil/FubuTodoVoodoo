@@ -1,0 +1,7 @@
+﻿<test condition="this.Get[[FubuMVC.Core.Security.ISecurityContext]]().IsAuthenticated()">
+    Welcome <b>${this.Get[[FubuMVC.Core.Security.ISecurityContext]]().CurrentUser.Identity.Name}</b>!
+    [ ${this.LinkTo[[FubuExperiment.Handlers.Account.LogOffInput]]().Text("Log Off")} ]
+</test>
+<else>
+    ${this.LinkTo[[FubuExperiment.Handlers.Account.LogOnInput]]().Text("Log On")}
+</else>

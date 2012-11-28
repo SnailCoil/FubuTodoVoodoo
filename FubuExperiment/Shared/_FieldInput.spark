@@ -1,0 +1,6 @@
+﻿<div class="editor-label">
+  <label for="${name}">${displayName}</label>
+</div>
+<div class="editor-field">
+  <input type="text" name="${name}" value="">
+</div>

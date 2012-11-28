@@ -1,0 +1,37 @@
+﻿<use namespace="FubuExperiment.Handlers.Todos" />
+<viewdata model="FubuExperiment.Handlers.Todos.TodoIndexModel" />
+<content:title>
+Todo page
+</content:title>
+<div id="todos">
+    <for each="var x in Model.Todos">
+        <Todo todo="x" username="Model.Username"/>
+    </for>
+</div>
+${this.FormFor(new FubuExperiment.Handlers.Todos.TodoAddModel()).Id("addTodoForm")}
+    <FieldInput name="'Title'" displayName="'Title'"/>
+    <FieldInput name="'Description'" displayName="'Description'"/>
+    <input type="hidden" name="Username" value="${Model.Username}" />
+    <input type="submit" value="Add todo"/>
+!{this.EndForm()}
+
+<script type="text/javascript">
+    $().ready(function () {
+        $("form").submit(function (form) {
+            form.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (data, status) {
+                    var notifBar = $("#notificationBar");
+                    notifBar.text(data.message);
+                    notifBar.show("fast").delay(3000).slideUp();
+                    if (data.refresh) {
+                        location.reload(true);
+                    }
+                }
+            });
+        });
+    });
+</script>
